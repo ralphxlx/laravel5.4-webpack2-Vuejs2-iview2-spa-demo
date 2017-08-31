@@ -87,15 +87,20 @@
                     if (valid) {
                         this.loading = true;
                         this.$http.post(config.getApi(config.api.login), this.formModel).then(response => {
-                            if (response.headers.map.Authorization !== undefined) {
-                              config.setToken(response.headers.map.Authorization[0]);
-                            }
+                            if (response.body.status_code === 200) {
+                                this.$Message.success('登录成功！');
 
-                            this.$Message.success('登录成功！');
-                            setTimeout(() => {
-                                window.location.href = '/admin.html';
-                            }, 1000);
+                                setTimeout(() => {
+                                    window.location.href = '/admin.html';
+                                }, 1000);
+                            } else {
+                                this.$Loading.error();
+                                this.$Message.error(response.body.msg);
+                                this.loading = false;
+                            }
                         }, response => {
+                            this.$Loading.error();
+                            this.$Message.error("发生了未知错误")
                             this.loading = false;
                         });
                     } else {
