@@ -3,7 +3,7 @@ let config = {
     debug: true,
     avatar_404: '/images/avatar_404.png',
     cdn: '/',
-    api_domain: 'http://blog-api.cn',
+    api_domain: 'http://laravel541.demo',
     img_url: function (path) {
         return this.cdn + path;
     }

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['domain' => 'blog-api.cn'], function () {
+Route::group(['domain' => 'laravel541.demo'], function () {
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'AdminController@index');
 
